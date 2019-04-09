@@ -1,6 +1,6 @@
 package it.polito.tdp.model;
 
-public class Esame {
+public class Esame implements Comparable<Esame> {
 
 	private String codins;
 	private String nomeCorso;
@@ -33,7 +33,7 @@ public class Esame {
 	public void setVoto(int voto) {
 		this.voto = voto;
 	}
-	
+
 	public int getCrediti() {
 		return crediti;
 	}
@@ -41,7 +41,7 @@ public class Esame {
 	public void setCrediti(int crediti) {
 		this.crediti = crediti;
 	}
-	
+
 	public String getNomeCorso() {
 		return nomeCorso;
 	}
@@ -78,6 +78,13 @@ public class Esame {
 	@Override
 	public String toString() {
 		return String.format("codins: %-6s  crediti: %-2d  voto: %-2d  %s", codins, crediti, voto, nomeCorso);
+	}
+
+	@Override
+	public int compareTo(Esame arg0) {
+		Esame e2 = arg0;
+
+		return ((int) (this.getVoto() / this.getVoto() - e2.getVoto() / e2.getVoto()));
 	}
 
 }
